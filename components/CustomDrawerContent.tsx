@@ -1,12 +1,16 @@
 import Feather from '@expo/vector-icons/Feather';
+import {
+  DrawerContentScrollView
+} from '@react-navigation/drawer';
 import { TouchableOpacity, Text, ScrollView, View, Image } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
 
-function CustomDrawerContent({ navigation }) {
+function CustomDrawerContent() {
   const insets = useSafeAreaInsets();
 
   return (
-    <SafeAreaView style={{ flex: 1, paddingTop: insets.top }}>
+    <DrawerContentScrollView style={{ flex: 1, paddingTop: insets.top }}>
       <ScrollView style={{ flex: 1 }}>
         <View className="flex items-center justify-center py-8 px-6">
           <View>
@@ -19,12 +23,19 @@ function CustomDrawerContent({ navigation }) {
         <TouchableOpacity
           className='bg-red-200'
           onPress={() => {
-            navigation.navigate('Home');
+            router.push("/(drawer)/(tabs)")
           }}>
           <Text>Home</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          className='bg-red-200'
+          onPress={() => {
+            router.push("/(drawer)/(tabs)/profile")
+          }}>
+          <Text>Profile</Text>
+        </TouchableOpacity>
       </ScrollView>
-    </SafeAreaView>
+    </DrawerContentScrollView>
   );
 }
 
