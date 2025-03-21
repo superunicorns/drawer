@@ -1,16 +1,15 @@
+import { cssInterop } from 'nativewind';
 import { Text, View } from 'react-native';
+
+const StyledViewContainer = cssInterop(View, { className: 'items-center flex-1 justify-center' });
+const StyledTitle = cssInterop(Text, { className: 'text-xl font-bold' });
 
 const HomeScreen = () => {
   return (
-    <View className={styles.container}>
-      <Text className={styles.title}>Home screen</Text>
-    </View>
+    <StyledViewContainer>
+      <StyledTitle>Home screen</StyledTitle>
+    </StyledViewContainer>
   );
 };
 
 export default HomeScreen;
-
-const styles = {
-  container: `items-center flex-1 justify-center`,
-  title: `text-xl font-bold`,
-};
