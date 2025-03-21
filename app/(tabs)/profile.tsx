@@ -1,8 +1,4 @@
-import { cssInterop } from "nativewind";
 import { Text, View } from 'react-native';
-
-const StyledView = cssInterop(View, { className: 'style'});
-const StyledText = cssInterop(Text, { className: 'style'});
 
 const ProfileScreen = () => {
   return (
