@@ -1,10 +1,13 @@
-import Feather from '@expo/vector-icons/Feather';
 import {
   DrawerContentScrollView
 } from '@react-navigation/drawer';
 import { TouchableOpacity, Text, ScrollView, View, Image } from 'react-native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
+import Feather from '@expo/vector-icons/Feather';
+import items from '@/constants/DrawerItems';
+
+const iconColor = "#334155";
 
 function CustomDrawerContent() {
   const insets = useSafeAreaInsets();
@@ -20,20 +23,22 @@ function CustomDrawerContent() {
             />
           </View>
         </View>
-        <TouchableOpacity
-          className='bg-red-200'
-          onPress={() => {
-            router.push("/(drawer)/(tabs)")
-          }}>
-          <Text>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          className='bg-red-200'
-          onPress={() => {
-            router.push("/(drawer)/(tabs)/profile")
-          }}>
-          <Text>Profile</Text>
-        </TouchableOpacity>
+        <View>
+          {items.map((item) => {
+            return (
+              <TouchableOpacity
+                key={item.label}
+                className='bg-red-200'
+                onPress={() => {
+                  router.push(item.url);
+                }}
+              >
+              <Feather name={item.icon} size={24} color={iconColor} />
+              <Text>{item.label}</Text>
+            </TouchableOpacity>
+            )
+          })}
+        </View>
       </ScrollView>
     </DrawerContentScrollView>
   );

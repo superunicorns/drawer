@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import { Drawer } from "expo-router/drawer";
 import CustomDrawerContent from '@/components/CustomDrawerContent';
 
